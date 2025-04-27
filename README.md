@@ -2,7 +2,7 @@
 
 ## Live Demo
 -  server : https://server-app-psi.vercel.app/
--  frontend :
+-  frontend : https://minor-project-two-wheat.vercel.app/
 
 ## Project Overview
 This Voting DApp is a decentralized application built on Ethereum blockchain that provides a secure, transparent, and tamper-proof electronic voting system. The application implements a token-based voting mechanism where only token holders are eligible to participate in the voting process, ensuring legitimate participation.
