@@ -12,7 +12,15 @@ const voterRoutes = require('./routes/voterRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: [
+    'https://minor-project-two-wheat.vercel.app',
+    'http://localhost:5173', // For local development
+    'http://localhost:3000'
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes

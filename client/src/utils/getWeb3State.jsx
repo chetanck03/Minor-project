@@ -67,7 +67,13 @@ export const getWeb3State = async () => {
         const message = "Welcome to Voting Dapp. You accept our terms and condition";
         const signature = await signer.signMessage(message);
         const dataSignature = { signature };
-        const res = await axios.post(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/authentication?accountAddress=${selectedAccount}`, dataSignature);
+        
+        // Fix the double slash issue by ensuring the backend URL doesn't end with a slash
+        const backendUrl = import.meta.env.VITE_REACT_APP_BACKEND_BASEURL.endsWith('/') 
+            ? import.meta.env.VITE_REACT_APP_BACKEND_BASEURL.slice(0, -1) 
+            : import.meta.env.VITE_REACT_APP_BACKEND_BASEURL;
+            
+        const res = await axios.post(`${backendUrl}/api/authentication?accountAddress=${selectedAccount}`, dataSignature);
         localStorage.setItem("token", res.data.token);
 
         const contractInstance = new ethers.Contract(contractAddress, abi, signer);
