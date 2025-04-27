@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Light mode (default) */
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+  
+  /* Dark mode */
+  .dark body {
+    @apply bg-dark-300 text-white;
+  }
+
+  /* Scrollbar styling - light mode */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-md;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500;
+  }
+  
+  /* Scrollbar styling - dark mode */
+  .dark ::-webkit-scrollbar-track {
+    @apply bg-dark-200;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    @apply bg-accent-100 rounded-md;
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent-300;
+  }
+}
+
+@layer utilities {
+  /* Image optimization */
+  .optimized-img {
+    @apply w-full h-auto object-cover;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-accent-300 to-primary-400;
+  }
+
+  /* For performance optimizations */
+  .gpu-accelerated {
+    @apply will-change-transform transform translate-z-0;
+  }
+  
+  /* Card styles for light/dark mode */
+  .card-light {
+    @apply bg-white shadow-md dark:bg-dark-200 rounded-xl transition-colors duration-300;
+  }
+  
+  .card-elevated {
+    @apply bg-gray-50 shadow-md dark:bg-dark-100 rounded-xl transition-colors duration-300;
+  }
+}
+
+/* Animation keyframes */
+@keyframes pulse-accent {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-accent {
+  animation: pulse-accent 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Focus states - improved accessibility */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-accent-300 focus:ring-opacity-50;
+}
+
+/* Transitions for theme switching */
+.theme-transition {
+  @apply transition-colors duration-300;
+}
